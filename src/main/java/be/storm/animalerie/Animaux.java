@@ -4,17 +4,35 @@ import java.time.LocalDate;
 
 public class Animaux {
 
-    public String name;
-    public Double poids;
-    public Double taille;
+    //region Attributs
+    private String name;
+    private Double poids;
+    private Double taille;
 
-    public boolean sexe;
+    private boolean sexe;
 
-    public Integer age;
+    private Integer age;
 
-    public Integer agehumain;
+    private Integer agehumain;
 
-    public LocalDate arrivee;
+    private LocalDate arrivee;
+
+    //endregion
+
+//region Constructeurs
+    public Animaux (String name, Double poids, Double taille, boolean sexe, Integer age, LocalDate arrivee ) {
+        this.name = name;
+        this.poids = poids;
+        this.taille = taille;
+        this.sexe = sexe;
+        this.age = age;
+        this.arrivee = arrivee;
+        //ageHumain();
+   }
+
+
+    //endregion
+    //region Setter & Getter
 
     public String getName() {
         return name;
@@ -72,12 +90,30 @@ public class Animaux {
         this.arrivee = arrivee;
     }
 
+    //endregion
+
     public void crier() {
         System.out.println("Je crie!");
     }
 
     public void whoDied(Animaux a, double death) {
 
+
+    }
+
+    public void sexe() {
+        if (this.sexe == true) {
+            System.out.println(this.name + " est une femelle");
+        }
+        else {
+            System.out.println(this.name + " est un mâle");
+        }
+    }
+
+
+    public void ageHumain() {
+        this.agehumain = this.age * 7;
+        System.out.println("l'âge humain de " + this.name + " est de " + agehumain + " ans.");
 
     }
 }

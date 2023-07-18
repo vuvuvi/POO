@@ -1,6 +1,8 @@
 package be.storm.animalerie;
 
-public class Chien extends  Animaux{
+import java.time.LocalDate;
+
+public class Chien extends Animaux{
 
     public String couleurcollar;
 
@@ -10,6 +12,11 @@ public class Chien extends  Animaux{
 
     public double deathrate = 1.0;
 
+    public Chien(String name, Double poids, Double taille, boolean sexe, Integer age, LocalDate arrivee) {
+       super(name, poids, taille, sexe, age, arrivee);
+
+    }
+//region Getter & Setter
     public String getCouleurcollar() {
         return couleurcollar;
     }
@@ -37,6 +44,7 @@ public class Chien extends  Animaux{
     public double getDeathrate() {
         return deathrate;
     }
+//endregion
 
 
 }

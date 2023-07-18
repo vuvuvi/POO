@@ -1,5 +1,7 @@
 package be.storm.animalerie;
 
+import java.time.LocalDate;
+
 public class Oiseau extends Animaux {
 
     public String couleur;
@@ -8,6 +10,10 @@ public class Oiseau extends Animaux {
 
     public double deathrate = 3.0;
 
+    public Oiseau(String name, Double poids, Double taille, boolean sexe, Integer age, LocalDate arrivee) {
+        super(name, poids, taille, sexe, age, arrivee);
+    }
+//region Getter & Setter
     public String getCouleur() {
         return couleur;
     }
@@ -27,6 +33,7 @@ public class Oiseau extends Animaux {
     public double getDeathrate() {
         return deathrate;
     }
+//endregion
 
 
 }
