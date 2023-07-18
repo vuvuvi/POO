@@ -31,12 +31,18 @@ public class Courant extends Compte{
 
     @Override
 
-    protected void calculInteret(double interet) {
+    protected void calculInteret() {
 
         if (this.getSolde() > 0) {
-            interet = 3;
+            double interet = 3;
 
         }
-        else { interet = 9.7;}
+        else { double interet = 9.7;}
+    }
+
+    @Override
+
+    public void appliquerInteret(){
+        this.getSolde() += (this.getInteret() / 100);
     }
 }

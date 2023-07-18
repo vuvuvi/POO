@@ -17,6 +17,10 @@ public abstract class Compte {
         this.numero = numero;
     }*/
 
+    public double getInteret() {
+        return interet;
+    }
+
     public double getSolde() {
         return solde;
     }
@@ -69,7 +73,7 @@ public abstract class Compte {
 
     }
     public void appliquerInteret() {
-        this.getSolde() += (this.interet / 100);
+
     }
 
 }
