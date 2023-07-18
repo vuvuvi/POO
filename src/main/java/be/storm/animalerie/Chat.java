@@ -1,6 +1,8 @@
 package be.storm.animalerie;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Chat extends  Animaux{
 
@@ -40,10 +42,13 @@ public class Chat extends  Animaux{
         this.poilsLongs = poilsLongs;
     }
 
-    public Double getDeathrate() {
-        return deathrate;
-    }
+
 //endregion
 
+@Override
+    public void whoDied(ArrayList h) {
+        super.whoDied(h);
 
+
+}
 }

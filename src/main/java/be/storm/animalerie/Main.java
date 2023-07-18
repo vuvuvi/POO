@@ -1,14 +1,18 @@
 package be.storm.animalerie;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
 
-        HashMap<Integer, HashMap> animaux = new HashMap<>();
-        HashMap<Integer, Chien> chiens = new HashMap<>();
-        HashMap<Integer, Chat> chats = new HashMap<>();
-        HashMap<Integer, Oiseau> oiseau = new HashMap<>();
+        ArrayList chat = new ArrayList<Chat>();
+        ArrayList chien = new ArrayList<Chien>();
+        ArrayList oiseau = new ArrayList<Oiseau>();
+
+      ArrayList animaux = new ArrayList<Animaux>();
+
 
         //region avant constructeurs
 
@@ -70,6 +74,6 @@ public class Main {
 
         //endregion
 
-
+animaux.add(new Chat("Pouly",2.5,0.20,true,3, LocalDate.of(2018,06,25)));
     }
 }

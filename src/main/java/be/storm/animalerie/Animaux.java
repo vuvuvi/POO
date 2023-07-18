@@ -1,8 +1,11 @@
 package be.storm.animalerie;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
 
-public class Animaux {
+public abstract class Animaux {
 
     //region Attributs
     private String name;
@@ -17,10 +20,12 @@ public class Animaux {
 
     private LocalDate arrivee;
 
+    public double deathrate;
+
     //endregion
 
-//region Constructeurs
-    public Animaux (String name, Double poids, Double taille, boolean sexe, Integer age, LocalDate arrivee ) {
+    //region Constructeurs
+    public Animaux(String name, Double poids, Double taille, boolean sexe, Integer age, LocalDate arrivee) {
         this.name = name;
         this.poids = poids;
         this.taille = taille;
@@ -28,7 +33,7 @@ public class Animaux {
         this.age = age;
         this.arrivee = arrivee;
         //ageHumain();
-   }
+    }
 
 
     //endregion
@@ -86,6 +91,10 @@ public class Animaux {
         return arrivee;
     }
 
+    public double getDeathrate() {
+        return deathrate;
+    }
+
     public void setArrivee(LocalDate arrivee) {
         this.arrivee = arrivee;
     }
@@ -96,16 +105,11 @@ public class Animaux {
         System.out.println("Je crie!");
     }
 
-    public void whoDied(Animaux a, double death) {
-
-
-    }
 
     public void sexe() {
         if (this.sexe == true) {
             System.out.println(this.name + " est une femelle");
-        }
-        else {
+        } else {
             System.out.println(this.name + " est un mâle");
         }
     }
@@ -116,4 +120,19 @@ public class Animaux {
         System.out.println("l'âge humain de " + this.name + " est de " + agehumain + " ans.");
 
     }
+
+    public void whoDied(ArrayList h) {
+        Random count = new Random();
+        double death = count.nextDouble(0, 1);
+        for (Object a : h) {
+
+            if (death < this.deathrate) {
+                System.out.println(a + " est mort !");
+
+                h.remove(a);
+            }
+        }
+    }
 }
+
+
