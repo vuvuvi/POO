@@ -27,9 +27,8 @@ public class Epargne extends Compte{
         }
     }
 
-    @Override
 
-    protected void calculInteret(double interet) {
-       interet = 4.5;
+    protected double calculInteret() {
+        return getSolde() * 0.045;
     }
 }

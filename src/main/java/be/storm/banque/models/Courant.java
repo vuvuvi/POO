@@ -17,9 +17,9 @@ public class Courant extends Compte{
         return ligneDeCredit;
     }
 
-    private void setLigneDeCredit(double ligneDeCredit) {
+    private void setLigneDeCredit(double ligneDeCredit)  throws LignedecreditException {
         if(ligneDeCredit < 0){
-            return;
+            throw new LignedecreditException();
         }
         this.ligneDeCredit = ligneDeCredit;
     }
@@ -29,20 +29,19 @@ public class Courant extends Compte{
         super.retrait(montant,getLigneDeCredit());
     }
 
-    @Override
 
-    protected void calculInteret() {
 
-        if (this.getSolde() > 0) {
-            double interet = 3;
-
+    protected double calculInteret() {
+        if(getSolde() < 0){
+            return getSolde() * 0.0975;
         }
-        else { double interet = 9.7;}
+        return getSolde() * 0.03;
+//        return getSolde() < 0 ? getSolde() * 0.0975 : getSolde() * 0.03;
     }
 
     @Override
 
     public void appliquerInteret(){
-        this.getSolde() += (this.getInteret() / 100);
+
     }
 }

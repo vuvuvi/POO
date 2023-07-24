@@ -6,7 +6,6 @@ public abstract class Compte {
     private String numero;
     private double solde;
     private Personne titulaire;
-
     private double interet;
 
     public String getNumero() {
@@ -49,25 +48,25 @@ public abstract class Compte {
         retrait(montant,0);
     }
 
-    public void retrait(double montant, double ligneDeCredit){
+    public void retrait(double montant, double ligneDeCredit)  {
 
         if(montant < 0){
-            return;
+            throw new OutofRange();
         }
         if(getSolde() - montant < - ligneDeCredit){
-            return;
+            throw new SoldeInsuffisant("Vous avez dépassé la limite de crédit autorisée");
         }
         solde -= montant;
     }
 
-    public void depot(double montant){
+    public void depot(double montant)  {
         if(montant < 0){
-            return;
+            throw new OutofRange();
         }
         solde += montant;
     }
 
-    protected  void calculInteret(double interet){
+    protected  void calculInteret(double r){
         this.interet = interet;
 
 
