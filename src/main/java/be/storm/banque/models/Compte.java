@@ -1,12 +1,12 @@
 package be.storm.banque.models;
 
-public abstract class Compte {
+public abstract class Compte implements Customer, Banker {
 
 
     private String numero;
     private double solde;
     private Personne titulaire;
-    private double interet;
+
 
     public String getNumero() {
         return numero;
@@ -16,9 +16,7 @@ public abstract class Compte {
         this.numero = numero;
     }*/
 
-    public double getInteret() {
-        return interet;
-    }
+
 
     public double getSolde() {
         return solde;
@@ -42,13 +40,13 @@ public abstract class Compte {
         this.titulaire = titulaire;
         this.solde = solde;
     }
-    public void retrait(double montant){
+    public void retrait(double montant) throws SoldeInsuffisant{
 
 
         retrait(montant,0);
     }
 
-    public void retrait(double montant, double ligneDeCredit)  {
+    public void retrait(double montant, double ligneDeCredit) throws SoldeInsuffisant {
 
         if(montant < 0){
             throw new OutofRange();
@@ -66,12 +64,12 @@ public abstract class Compte {
         solde += montant;
     }
 
-    protected  void calculInteret(double r){
-        this.interet = interet;
+    protected abstract double calculInteret();
 
 
-    }
+
     public void appliquerInteret() {
+        solde += calculInteret();
 
     }
 

@@ -1,16 +1,17 @@
 package be.storm.banque.models;
-
+import be.storm.banque.models.SoldeInsuffisant;
+import be.storm.banque.models.OutofRange;
 public class Courant extends Compte{
     private double ligneDeCredit;
 
-    public Courant( Personne titulaire,String numero, double solde) {
-        super(numero, titulaire, solde);
+    public Courant( Personne titulaire,String numero) {
+        super(numero, titulaire);
 
     }
-    public Courant(String numero, Personne titulaire, double ligneDeCredit) {
+    public Courant(String numero, Personne titulaire, double ligneDeCredit) throws OutofRange {
         //super(numero, titulaire);
         super(numero, titulaire);
-        this.ligneDeCredit = ligneDeCredit;
+       setLigneDeCredit(ligneDeCredit);
     }
 
     public double getLigneDeCredit() {
@@ -25,7 +26,7 @@ public class Courant extends Compte{
     }
 
     @Override
-    public void retrait(double montant) {
+    public void retrait(double montant) throws SoldeInsuffisant {
         super.retrait(montant,getLigneDeCredit());
     }
 
@@ -39,9 +40,12 @@ public class Courant extends Compte{
 //        return getSolde() < 0 ? getSolde() * 0.0975 : getSolde() * 0.03;
     }
 
-    @Override
-
-    public void appliquerInteret(){
-
+    public void traiter(Compte c) {
+        if (this.getSolde() < 0) {
+            traiter(c);
+        }
     }
+
+
+
 }
